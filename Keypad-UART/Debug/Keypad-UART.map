@@ -1,0 +1,358 @@
+******************************************************************************
+                  TI ARM Linker PC v20.2.7                     
+******************************************************************************
+>> Linked Mon Feb 24 21:34:00 2025
+
+OUTPUT FILE NAME:   <Keypad-UART.out>
+ENTRY POINT SYMBOL: "_c_int00_noinit_noargs"  address: 00000479
+
+
+MEMORY CONFIGURATION
+
+         name            origin    length      used     unused   attr    fill
+----------------------  --------  ---------  --------  --------  ----  --------
+  FLASH                 00000000   00040000  00000bba  0003f446  R  X
+  SRAM                  20000000   00008000  00000200  00007e00  RW X
+
+
+SEGMENT ALLOCATION MAP
+
+run origin  load origin   length   init length attrs members
+----------  ----------- ---------- ----------- ----- -------
+00000000    00000000    00000bba   00000bba    r-x
+  00000000    00000000    0000026c   0000026c    r-- .intvecs
+  0000026c    0000026c    000002c4   000002c4    r-x .text
+  00000530    00000530    00000010   00000010    r-- .const
+  00000540    00000540    00000170   00000170    r-x .text.GPIOPadConfigSet
+  000006b0    000006b0    0000012c   0000012c    r-x .text.SysCtlClockGet
+  000007dc    000007dc    00000124   00000124    r-x .text.SysCtlClockSet
+  00000900    00000900    00000090   00000090    r-- .rodata.g_pui32GPIOBaseAddrs
+  00000990    00000990    0000006c   0000006c    r-- .rodata.g_pui32Xtals
+  000009fc    000009fc    0000004c   0000004c    r-x .text.GPIOPinConfigure
+  00000a48    00000a48    00000058   00000058    r-x .text.UARTConfigSetExpClk
+  00000aa0    00000aa0    0000002e   0000002e    r-x .text.GPIODirModeSet
+  00000ace    00000ace    00000026   00000026    r-x .text.SysCtlPeripheralReady
+  00000af4    00000af4    00000022   00000022    r-x .text.SysCtlPeripheralEnable
+  00000b16    00000b16    0000001c   0000001c    r-x .text.GPIOPinTypeGPIOInput
+  00000b32    00000b32    0000001c   0000001c    r-x .text.GPIOPinTypeGPIOOutput
+  00000b4e    00000b4e    0000001c   0000001c    r-x .text.GPIOPinTypeUART
+  00000b6a    00000b6a    0000001c   0000001c    r-x .text.UARTDisable
+  00000b86    00000b86    00000016   00000016    r-x .text.UARTEnable
+  00000b9c    00000b9c    0000000a   0000000a    r-x .text.UARTCharPut
+  00000ba6    00000ba6    00000008   00000008    r-x .text.SysCtlDelay
+  00000bae    00000bae    00000006   00000006    r-x .text.GPIOPinRead
+  00000bb4    00000bb4    00000006   00000006    r-x .text.GPIOPinWrite
+20000000    20000000    00000200   00000000    rw-
+  20000000    20000000    00000200   00000000    rw- .stack
+
+
+SECTION ALLOCATION MAP
+
+ output                                  attributes/
+section   page    origin      length       input sections
+--------  ----  ----------  ----------   ----------------
+.intvecs   0    00000000    0000026c     
+                  00000000    0000026c     tm4c123gh6pm_startup_ccs.obj (.intvecs)
+
+.text      0    0000026c    000002c4     
+                  0000026c    0000020c     main.obj (.text)
+                  00000478    0000002c     rtsv7M4_T_le_v4SPD16_eabi.lib : boot_cortex_m.c.obj (.text:_c_int00_noinit_noargs:_c_int00_noinit_noargs)
+                  000004a4    0000000c     tm4c123gh6pm_startup_ccs.obj (.text)
+                  000004b0    00000004     rtsv7M4_T_le_v4SPD16_eabi.lib : pre_init.c.obj (.text:_system_pre_init)
+                  000004b4    00000004                                   : exit.c.obj (.text:abort:abort)
+                  000004b8    00000008     libdriver.a : uart.o (.tramp.UARTCharPut.1)
+                  000004c0    00000008                 : gpio.o (.tramp.GPIOPinRead.1)
+                  000004c8    00000008                 : gpio.o (.tramp.GPIOPadConfigSet.1)
+                  000004d0    00000008                 : gpio.o (.tramp.GPIOPinTypeGPIOInput.1)
+                  000004d8    00000008                 : gpio.o (.tramp.GPIOPinWrite.1)
+                  000004e0    00000008                 : gpio.o (.tramp.GPIOPinTypeGPIOOutput.1)
+                  000004e8    00000008                 : uart.o (.tramp.UARTEnable.1)
+                  000004f0    00000008                 : uart.o (.tramp.UARTConfigSetExpClk.1)
+                  000004f8    00000008                 : sysctl.o (.tramp.SysCtlClockGet.1)
+                  00000500    00000008                 : gpio.o (.tramp.GPIOPinTypeUART.1)
+                  00000508    00000008                 : gpio.o (.tramp.GPIOPinConfigure.1)
+                  00000510    00000008                 : sysctl.o (.tramp.SysCtlPeripheralReady.1)
+                  00000518    00000008                 : sysctl.o (.tramp.SysCtlPeripheralEnable.1)
+                  00000520    00000008                 : sysctl.o (.tramp.SysCtlDelay.1)
+                  00000528    00000008                 : sysctl.o (.tramp.SysCtlClockSet.1)
+
+.const     0    00000530    00000010     
+                  00000530    00000010     main.obj (.const:keypad)
+
+.cinit     0    00000000    00000000     UNINITIALIZED
+
+.init_array 
+*          0    00000000    00000000     UNINITIALIZED
+
+.stack     0    20000000    00000200     UNINITIALIZED
+                  20000000    00000004     rtsv7M4_T_le_v4SPD16_eabi.lib : boot_cortex_m.c.obj (.stack)
+                  20000004    000001fc     --HOLE--
+
+__llvm_prf_cnts 
+*          0    20000000    00000000     UNINITIALIZED
+
+.text.GPIOPadConfigSet 
+*          0    00000540    00000170     
+                  00000540    00000170     libdriver.a : gpio.o (.text.GPIOPadConfigSet)
+
+.text.SysCtlClockGet 
+*          0    000006b0    0000012c     
+                  000006b0    0000012c     libdriver.a : sysctl.o (.text.SysCtlClockGet)
+
+.text.SysCtlClockSet 
+*          0    000007dc    00000124     
+                  000007dc    0000011c     libdriver.a : sysctl.o (.text.SysCtlClockSet)
+                  000008f8    00000008                 : sysctl.o (.tramp.SysCtlDelay.2)
+
+.rodata.g_pui32GPIOBaseAddrs 
+*          0    00000900    00000090     
+                  00000900    00000090     libdriver.a : gpio.o (.rodata.g_pui32GPIOBaseAddrs)
+
+.rodata.g_pui32Xtals 
+*          0    00000990    0000006c     
+                  00000990    0000006c     libdriver.a : sysctl.o (.rodata.g_pui32Xtals)
+
+.text.GPIOPinConfigure 
+*          0    000009fc    0000004c     
+                  000009fc    0000004c     libdriver.a : gpio.o (.text.GPIOPinConfigure)
+
+.text.UARTConfigSetExpClk 
+*          0    00000a48    00000058     
+                  00000a48    00000048     libdriver.a : uart.o (.text.UARTConfigSetExpClk)
+                  00000a90    00000008                 : uart.o (.tramp.UARTEnable.2)
+                  00000a98    00000008                 : uart.o (.tramp.UARTDisable.1)
+
+.text.GPIODirModeSet 
+*          0    00000aa0    0000002e     
+                  00000aa0    0000002e     libdriver.a : gpio.o (.text.GPIODirModeSet)
+
+.text.SysCtlPeripheralReady 
+*          0    00000ace    00000026     
+                  00000ace    00000026     libdriver.a : sysctl.o (.text.SysCtlPeripheralReady)
+
+.text.SysCtlPeripheralEnable 
+*          0    00000af4    00000022     
+                  00000af4    00000022     libdriver.a : sysctl.o (.text.SysCtlPeripheralEnable)
+
+.text.GPIOPinTypeGPIOInput 
+*          0    00000b16    0000001c     
+                  00000b16    0000001c     libdriver.a : gpio.o (.text.GPIOPinTypeGPIOInput)
+
+.text.GPIOPinTypeGPIOOutput 
+*          0    00000b32    0000001c     
+                  00000b32    0000001c     libdriver.a : gpio.o (.text.GPIOPinTypeGPIOOutput)
+
+.text.GPIOPinTypeUART 
+*          0    00000b4e    0000001c     
+                  00000b4e    0000001c     libdriver.a : gpio.o (.text.GPIOPinTypeUART)
+
+.text.UARTDisable 
+*          0    00000b6a    0000001c     
+                  00000b6a    0000001c     libdriver.a : uart.o (.text.UARTDisable)
+
+.text.UARTEnable 
+*          0    00000b86    00000016     
+                  00000b86    00000016     libdriver.a : uart.o (.text.UARTEnable)
+
+.text.UARTCharPut 
+*          0    00000b9c    0000000a     
+                  00000b9c    0000000a     libdriver.a : uart.o (.text.UARTCharPut)
+
+.text.SysCtlDelay 
+*          0    00000ba6    00000008     
+                  00000ba6    00000008     libdriver.a : sysctl.o (.text.SysCtlDelay)
+
+.text.GPIOPinRead 
+*          0    00000bae    00000006     
+                  00000bae    00000006     libdriver.a : gpio.o (.text.GPIOPinRead)
+
+.text.GPIOPinWrite 
+*          0    00000bb4    00000006     
+                  00000bb4    00000006     libdriver.a : gpio.o (.text.GPIOPinWrite)
+
+MODULE SUMMARY
+
+       Module                         code   ro data   rw data
+       ------                         ----   -------   -------
+    .\
+       tm4c123gh6pm_startup_ccs.obj   12     620       0      
+       main.obj                       524    16        0      
+    +--+------------------------------+------+---------+---------+
+       Total:                         536    636       0      
+                                                              
+    C:/ti/TivaWare_C_Series-2.2.0.295/driverlib/gcc/libdriver.a
+       sysctl.o                       712    108       0      
+       gpio.o                         642    144       0      
+       uart.o                         172    0         0      
+    +--+------------------------------+------+---------+---------+
+       Total:                         1526   252       0      
+                                                              
+    C:\ti\ccs1240\ccs\tools\compiler\ti-cgt-arm_20.2.7.LTS\lib\rtsv7M4_T_le_v4SPD16_eabi.lib
+       boot_cortex_m.c.obj            44     0         0      
+       exit.c.obj                     4      0         0      
+       pre_init.c.obj                 4      0         0      
+    +--+------------------------------+------+---------+---------+
+       Total:                         52     0         0      
+                                                              
+       Stack:                         0      0         512    
+    +--+------------------------------+------+---------+---------+
+       Grand Total:                   2114   888       512    
+
+
+FAR CALL TRAMPOLINES
+
+callee name               trampoline name
+   callee addr  tramp addr   call addr  call info
+--------------  -----------  ---------  ----------------
+UARTCharPut               $Tramp$TT$S$$UARTCharPut
+   00000b9d     000004b8     000003fa   main.obj (.text)
+                             00000410   main.obj (.text)
+GPIOPinRead               $Tramp$TT$S$$GPIOPinRead
+   00000baf     000004c0     00000374   main.obj (.text)
+GPIOPadConfigSet          $Tramp$TT$S$$GPIOPadConfigSet
+   00000541     000004c8     00000346   main.obj (.text)
+GPIOPinTypeGPIOInput      $Tramp$TT$S$$GPIOPinTypeGPIOInput
+   00000b17     000004d0     0000033a   main.obj (.text)
+GPIOPinWrite              $Tramp$TT$S$$GPIOPinWrite
+   00000bb5     000004d8     00000332   main.obj (.text)
+                             0000036c   main.obj (.text)
+                             000003a6   main.obj (.text)
+                             000003e6   main.obj (.text)
+GPIOPinTypeGPIOOutput     $Tramp$TT$S$$GPIOPinTypeGPIOOutput
+   00000b33     000004e0     00000328   main.obj (.text)
+UARTEnable                $Tramp$TT$S$$UARTEnable
+   00000b87     000004e8     000002fc   main.obj (.text)
+UARTConfigSetExpClk       $Tramp$TT$S$$UARTConfigSetExpClk
+   00000a49     000004f0     000002f6   main.obj (.text)
+SysCtlClockGet            $Tramp$TT$S$$SysCtlClockGet
+   000006b1     000004f8     000002e8   main.obj (.text)
+GPIOPinTypeUART           $Tramp$TT$S$$GPIOPinTypeUART
+   00000b4f     00000500     000002e4   main.obj (.text)
+GPIOPinConfigure          $Tramp$TT$S$$GPIOPinConfigure
+   000009fd     00000508     000002d2   main.obj (.text)
+                             000002da   main.obj (.text)
+SysCtlPeripheralReady     $Tramp$TT$S$$SysCtlPeripheralReady
+   00000acf     00000510     000002be   main.obj (.text)
+                             000002c8   main.obj (.text)
+                             00000312   main.obj (.text)
+                             0000031c   main.obj (.text)
+SysCtlPeripheralEnable    $Tramp$TT$S$$SysCtlPeripheralEnable
+   00000af5     00000518     000002b2   main.obj (.text)
+                             000002b8   main.obj (.text)
+                             00000306   main.obj (.text)
+                             0000030c   main.obj (.text)
+SysCtlDelay               $Tramp$TT$S$$SysCtlDelay
+   00000ba7     00000520     000002a8   main.obj (.text)
+SysCtlClockSet            $Tramp$TT$S$$SysCtlClockSet
+   000007dd     00000528     00000270   main.obj (.text)
+SysCtlDelay               $Tramp$TT$S$$SysCtlDelay
+   00000ba7     000008f8     000008d0   libdriver.a : sysctl.o (.text.SysCtlClockSet)
+UARTEnable                $Tramp$TT$S$$UARTEnable
+   00000b87     00000a90     00000a8c   libdriver.a : uart.o (.text.UARTConfigSetExpClk)
+UARTDisable               $Tramp$TT$S$$UARTDisable
+   00000b6b     00000a98     00000a52   libdriver.a : uart.o (.text.UARTConfigSetExpClk)
+
+[18 trampolines]
+[29 trampoline calls]
+
+
+GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name 
+
+address   name                   
+-------   ----                   
+000004b5  C$$EXIT                
+00000aa1  GPIODirModeSet         
+00000541  GPIOPadConfigSet       
+000009fd  GPIOPinConfigure       
+00000baf  GPIOPinRead            
+00000b17  GPIOPinTypeGPIOInput   
+00000b33  GPIOPinTypeGPIOOutput  
+00000b4f  GPIOPinTypeUART        
+00000bb5  GPIOPinWrite           
+0000034d  Keypad_GetKey          
+00000303  Keypad_Init            
+000004a5  ResetISR               
+000006b1  SysCtlClockGet         
+000007dd  SysCtlClockSet         
+00000ba7  SysCtlDelay            
+00000af5  SysCtlPeripheralEnable 
+00000acf  SysCtlPeripheralReady  
+000002af  UART0_Init             
+00000b9d  UARTCharPut            
+00000a49  UARTConfigSetExpClk    
+00000b6b  UARTDisable            
+00000b87  UARTEnable             
+000003ef  UART_SendChar          
+00000401  UART_SendString        
+20000200  __STACK_END            
+00000200  __STACK_SIZE           
+20000200  __STACK_TOP            
+ffffffff  __TI_pprof_out_hndl    
+ffffffff  __TI_prof_data_size    
+ffffffff  __TI_prof_data_start   
+00000000  __TI_static_base__     
+ffffffff  __binit__              
+ffffffff  __c_args__             
+UNDEFED   __mpu_init             
+20000000  __stack                
+20000000  __start___llvm_prf_cnts
+20000000  __stop___llvm_prf_cnts 
+00000479  _c_int00_noinit_noargs 
+000004b1  _system_pre_init       
+000004b5  abort                  
+ffffffff  binit                  
+00000000  g_pfnVectors           
+00000530  keypad                 
+0000026d  main                   
+
+
+GLOBAL SYMBOLS: SORTED BY Symbol Address 
+
+address   name                   
+-------   ----                   
+00000000  __TI_static_base__     
+00000000  g_pfnVectors           
+00000200  __STACK_SIZE           
+0000026d  main                   
+000002af  UART0_Init             
+00000303  Keypad_Init            
+0000034d  Keypad_GetKey          
+000003ef  UART_SendChar          
+00000401  UART_SendString        
+00000479  _c_int00_noinit_noargs 
+000004a5  ResetISR               
+000004b1  _system_pre_init       
+000004b5  C$$EXIT                
+000004b5  abort                  
+00000530  keypad                 
+00000541  GPIOPadConfigSet       
+000006b1  SysCtlClockGet         
+000007dd  SysCtlClockSet         
+000009fd  GPIOPinConfigure       
+00000a49  UARTConfigSetExpClk    
+00000aa1  GPIODirModeSet         
+00000acf  SysCtlPeripheralReady  
+00000af5  SysCtlPeripheralEnable 
+00000b17  GPIOPinTypeGPIOInput   
+00000b33  GPIOPinTypeGPIOOutput  
+00000b4f  GPIOPinTypeUART        
+00000b6b  UARTDisable            
+00000b87  UARTEnable             
+00000b9d  UARTCharPut            
+00000ba7  SysCtlDelay            
+00000baf  GPIOPinRead            
+00000bb5  GPIOPinWrite           
+20000000  __stack                
+20000000  __start___llvm_prf_cnts
+20000000  __stop___llvm_prf_cnts 
+20000200  __STACK_END            
+20000200  __STACK_TOP            
+ffffffff  __TI_pprof_out_hndl    
+ffffffff  __TI_prof_data_size    
+ffffffff  __TI_prof_data_start   
+ffffffff  __binit__              
+ffffffff  __c_args__             
+ffffffff  binit                  
+UNDEFED   __mpu_init             
+
+[44 symbols]
